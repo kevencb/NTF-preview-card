@@ -37,6 +37,7 @@ body{
 
 main{
     width: 90%;
+    max-width: 35rem;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -48,24 +49,50 @@ main{
     border-radius: 1.5rem;
     color: var(--white);
     margin-bottom: 0px;
+    position: relative;
     &__cover{
-        display: block;
+        position: relative;
+        width: 100%;
+        height: 278px;
+        border-radius: .8rem;
+        overflow: hidden;
         img{
+            width: 100%;
+        }
+        .overlay{
             border-radius: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
             width: 100%;
             height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all ease-in-out 300ms;
+            background-color: rgba(0, 255, 248, .4);
+        }
+        ::before{
+            content: url('../images/icon-view.svg');
         }
     }
-    &__cover:hover{
-        background-color: #00FFF8;
+    &__cover:hover > .overlay{
+        visibility: visible;
+        opacity: 1;
     }
     &__header{
         margin-top: 2.4rem;
         margin-bottom: 1.6rem;
-        h2{
+        &-link{
+            display: block;
             font-size: 2.2rem;
+            color: var(--white);
             font-weight: var(--semiBold);
             margin-bottom: 1.2rem;
+            transition: all ease-in-out 300ms;
+        }
+        &-link:hover{
+            color: var(--cyan);
         }
         p{
             color: var(--softBlue);
@@ -77,10 +104,13 @@ main{
         justify-content: space-between;
         color: var(--softBlue);
         font-weight: var(--regular);
-        padding: 0 0 1.6rem 0;
         border-bottom: 1px solid var(--veryDarkBlueLine);
-        margin-bottom: 1.6rem;
         font-size: 1.5rem;
+        padding-bottom: 1.6rem;
+        margin-bottom: 1.6rem;
+        @media (min-width: 1260px) {
+            padding-bottom: 2.4rem;
+        }
         &-price{
             color: var(--cyan);
             font-weight: var(--semiBold);
@@ -100,6 +130,7 @@ main{
         gap: 1.6rem;
         font-size: 1.5rem;
         color: var(--softBlue);
+        font-weight: 300;
         img{
             width: 3.3rem;
             border-radius: 50rem;
@@ -107,6 +138,10 @@ main{
         }
         a{
             color: var(--white);
+            transition: all ease-in-out 300ms;
+        }
+        a:hover{
+            color: var(--cyan);
         }
     }
 }
